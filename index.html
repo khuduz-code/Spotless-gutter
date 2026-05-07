@@ -4,666 +4,585 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spotless Rain Gutter Cleaning | Los Angeles, CA</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#07111f;
+  --deep:#0c1c35;
+  --blue:#1a4a8a;
+  --sky:#2d7dd2;
+  --rain:#5bb8f5;
+  --ice:#d4eeff;
+  --white:#f8fbff;
+  --gold:#e8a923;
+  --gold2:#f5c842;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
 
-  :root {
-    --navy: #0a1628;
-    --deep: #0d1f3c;
-    --blue: #1a4a8a;
-    --sky: #2d7dd2;
-    --rain: #5bb8f5;
-    --ice: #d4eeff;
-    --white: #f8fbff;
-    --gold: #e8a923;
-    --gold2: #f5c842;
-    --dark-text: #0a1628;
-    --mid: #4a5568;
-  }
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;
+  background:rgba(7,17,31,0.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(91,184,245,0.1);
+  transition:padding .35s,background .35s;
+}
+nav.scrolled{padding:.7rem 5%;background:rgba(7,17,31,0.97)}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.nav-logo-mark{
+  width:40px;height:40px;border-radius:9px;
+  background:linear-gradient(135deg,var(--sky),var(--rain));
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  flex-shrink:0;
+}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-text b{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.07em;color:var(--white)}
+.nav-logo-text small{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rain);font-weight:500}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{
+  text-decoration:none;color:rgba(248,251,255,.7);
+  font-size:.83rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;
+  transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:100%;
+  height:1.5px;background:var(--rain);transition:right .3s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{right:0}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy)!important;padding:.6rem 1.4rem;
+  border-radius:6px;font-weight:700!important;
+  transition:transform .2s,box-shadow .2s!important;
+}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,169,35,.4)!important;color:var(--navy)!important}
 
-  html { scroll-behavior: smooth; }
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;position:relative;
+  display:flex;align-items:center;overflow:hidden;
+}
+/* 
+  HERO BG PHOTO: Worker on ladder cleaning gutters — shows the actual service in action.
+  Unsplash photo by Erik Mclean (ladder/roof work)
+  Darkened heavily so text reads clearly.
+*/
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(160deg,rgba(7,17,31,.95) 0%,rgba(12,28,53,.7) 45%,rgba(26,74,138,.45) 100%),
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=85') center 30%/cover no-repeat;
+}
+.rain-lines{
+  position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(
+    90deg,transparent,transparent 4px,
+    rgba(91,184,245,.015) 4px,rgba(91,184,245,.015) 5px
+  );
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:800px;padding:0 5%;padding-top:130px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(91,184,245,.1);border:1px solid rgba(91,184,245,.28);
+  padding:.38rem 1rem;border-radius:40px;
+  font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rain);
+  margin-bottom:1.4rem;
+  opacity:0;animation:fadeUp .7s .15s forwards;
+}
+.hero-badge::before{content:'★';color:var(--gold)}
+h1.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.8rem,8.5vw,8rem);
+  line-height:.9;letter-spacing:.025em;color:var(--white);
+  margin-bottom:.35em;
+  opacity:0;animation:fadeUp .8s .3s forwards;
+}
+h1.hero-title .accent{color:var(--rain)}
+h1.hero-title .gold{color:var(--gold)}
+.hero-sub{
+  font-size:1.15rem;font-weight:300;color:rgba(248,251,255,.78);
+  line-height:1.72;max-width:520px;margin-bottom:2.2rem;
+  opacity:0;animation:fadeUp .8s .48s forwards;
+}
+.hero-btns{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s .63s forwards;
+}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);font-weight:700;font-size:.93rem;
+  padding:.88rem 1.9rem;border-radius:8px;text-decoration:none;
+  border:none;cursor:pointer;letter-spacing:.04em;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(232,169,35,.45)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--white);font-weight:500;font-size:.93rem;
+  padding:.88rem 1.9rem;border-radius:8px;text-decoration:none;
+  border:1.5px solid rgba(91,184,245,.35);cursor:pointer;
+  transition:all .25s;
+}
+.btn-ghost:hover{border-color:var(--rain);background:rgba(91,184,245,.1)}
+.hero-stats{
+  position:absolute;right:5%;bottom:7%;z-index:2;
+  display:flex;gap:1.5rem;
+  opacity:0;animation:fadeUp .8s .8s forwards;
+}
+.stat-card{
+  background:rgba(7,17,31,.72);
+  border:1px solid rgba(91,184,245,.18);
+  border-radius:12px;padding:1.1rem 1.6rem;
+  text-align:center;backdrop-filter:blur(10px);
+  transition:transform .3s;
+}
+.stat-card:hover{transform:translateY(-4px)}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;color:var(--gold);line-height:1}
+.stat-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rain);margin-top:.25rem}
+.hero-scroll{
+  position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:.35rem;
+  opacity:0;animation:fadeIn 1s 1.2s forwards;
+}
+.hero-scroll span{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,251,255,.35)}
+.scroll-bar{width:1px;height:48px;background:linear-gradient(to bottom,rgba(91,184,245,.6),transparent);animation:scrollPulse 2s infinite}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--navy);
-    color: var(--white);
-    overflow-x: hidden;
-  }
+/* ─── TRUST BAR ─── */
+.trust-bar{
+  background:rgba(255,255,255,.025);
+  border-top:1px solid rgba(91,184,245,.09);
+  border-bottom:1px solid rgba(91,184,245,.09);
+  padding:1.3rem 5%;
+  display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:.55rem;
+  font-size:.8rem;font-weight:500;color:rgba(248,251,255,.6);
+  letter-spacing:.06em;text-transform:uppercase;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 5%;
-    background: rgba(10,22,40,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(91,184,245,0.12);
-    transition: all 0.4s;
-  }
-  nav.scrolled { padding: 0.8rem 5%; background: rgba(10,22,40,0.97); }
-  .nav-logo {
-    display: flex; align-items: center; gap: 0.7rem;
-    text-decoration: none;
-  }
-  .nav-logo-icon {
-    width: 42px; height: 42px;
-    background: linear-gradient(135deg, var(--sky), var(--rain));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
-  }
-  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-  .nav-logo-text span:first-child {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.25rem; letter-spacing: 0.08em; color: var(--white);
-  }
-  .nav-logo-text span:last-child {
-    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--rain); font-weight: 500;
-  }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: rgba(248,251,255,0.75);
-    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em;
-    text-transform: uppercase; transition: color 0.25s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
-    height: 1.5px; background: var(--rain); transition: right 0.3s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-links a:hover::after { right: 0; }
-  .nav-cta {
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: var(--navy) !important;
-    padding: 0.65rem 1.5rem; border-radius: 6px;
-    font-weight: 600 !important; transition: transform 0.2s, box-shadow 0.2s !important;
-  }
-  .nav-cta::after { display: none !important; }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,169,35,0.4) !important; color: var(--navy) !important; }
+/* ─── SECTIONS ─── */
+section{padding:7rem 5%}
+.stag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--rain);margin-bottom:.7rem}
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,5vw,4.4rem);line-height:.96;color:var(--white);margin-bottom:.9rem;letter-spacing:.02em}
+.stitle .gold{color:var(--gold)}
+.sdesc{font-size:1rem;font-weight:300;color:rgba(248,251,255,.62);line-height:1.78;max-width:500px}
+.divider{width:56px;height:3px;background:linear-gradient(to right,var(--sky),var(--rain));margin:1.1rem 0;border-radius:3px}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:0;flex-wrap:wrap;gap:1.5rem}
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex; align-items: center;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(160deg, rgba(10,22,40,0.92) 0%, rgba(13,31,60,0.75) 50%, rgba(26,74,138,0.6) 100%),
-      url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80') center/cover no-repeat;
-  }
-  .rain-overlay {
-    position: absolute; inset: 0; pointer-events: none;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent, transparent 3px,
-      rgba(91,184,245,0.018) 3px, rgba(91,184,245,0.018) 4px
-    );
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 780px; padding: 0 5%; padding-top: 120px;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(91,184,245,0.12);
-    border: 1px solid rgba(91,184,245,0.3);
-    padding: 0.4rem 1rem; border-radius: 40px;
-    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--rain);
-    margin-bottom: 1.5rem;
-    opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
-  }
-  .hero-badge::before { content: '★'; color: var(--gold); }
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 8vw, 7.5rem);
-    line-height: 0.92; letter-spacing: 0.02em;
-    color: var(--white); margin-bottom: 0.3em;
-    opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
-  }
-  .hero-title .accent { color: var(--rain); }
-  .hero-title .gold-accent { color: var(--gold); }
-  .hero-sub {
-    font-size: 1.2rem; font-weight: 300; color: rgba(248,251,255,0.8);
-    line-height: 1.7; max-width: 540px; margin-bottom: 2.4rem;
-    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
-  }
-  .hero-actions {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: var(--navy); font-weight: 700; font-size: 0.95rem;
-    padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none;
-    border: none; cursor: pointer; letter-spacing: 0.04em;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(232,169,35,0.45); }
-  .btn-secondary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: transparent;
-    color: var(--white); font-weight: 500; font-size: 0.95rem;
-    padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none;
-    border: 1.5px solid rgba(91,184,245,0.4); cursor: pointer;
-    transition: all 0.25s;
-  }
-  .btn-secondary:hover { border-color: var(--rain); background: rgba(91,184,245,0.1); }
+/* ─── ABOUT ─── */
+/*
+  ABOUT MAIN PHOTO: Man on ladder scooping leaves from gutter (clear gutter-cleaning action shot)
+  Unsplash: photo-1607400201515-c2c41c07d307 — gutter with leaves, top-down view
+  ACCENT: Clean new gutters on a house — photo-1600585154526-990dced4db0d
+*/
+#about{display:grid;grid-template-columns:1fr 1fr;gap:5.5rem;align-items:center}
+.about-visual{position:relative}
+.about-main-img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;
+  filter:brightness(.92) contrast(1.05);display:block;
+}
+.about-accent-img{
+  position:absolute;bottom:-3rem;right:-2.5rem;
+  width:54%;aspect-ratio:1;object-fit:cover;
+  border-radius:12px;border:4px solid var(--navy);
+  box-shadow:0 20px 55px rgba(0,0,0,.55);
+}
+.about-yrs{
+  position:absolute;top:1.5rem;left:-2rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);padding:.75rem 1.1rem;border-radius:10px;
+  font-weight:700;box-shadow:0 10px 28px rgba(232,169,35,.38);
+}
+.about-yrs .big{font-family:'Bebas Neue',sans-serif;font-size:2rem;display:block;line-height:1}
+.about-yrs .sm{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}
+.feat-list{margin-top:2.2rem;display:flex;flex-direction:column;gap:.9rem}
+.feat{
+  display:flex;align-items:flex-start;gap:.9rem;
+  padding:.9rem 1.1rem;border-radius:10px;
+  background:rgba(255,255,255,.025);border:1px solid rgba(91,184,245,.09);
+  transition:background .25s,border-color .25s,transform .25s;cursor:default;
+}
+.feat:hover{background:rgba(91,184,245,.06);border-color:rgba(91,184,245,.22);transform:translateX(6px)}
+.feat-icon{
+  width:42px;height:42px;min-width:42px;border-radius:9px;
+  background:linear-gradient(135deg,rgba(45,125,210,.28),rgba(91,184,245,.12));
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.feat h4{font-size:.92rem;font-weight:600;margin-bottom:.18rem}
+.feat p{font-size:.8rem;color:rgba(248,251,255,.52);line-height:1.5}
 
-  .hero-stats {
-    position: absolute; right: 5%; bottom: 8%; z-index: 2;
-    display: flex; gap: 2rem;
-    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
-  }
-  .stat-card {
-    background: rgba(10,22,40,0.7);
-    border: 1px solid rgba(91,184,245,0.2);
-    border-radius: 12px; padding: 1.2rem 1.8rem;
-    text-align: center; backdrop-filter: blur(8px);
-    transition: transform 0.3s;
-  }
-  .stat-card:hover { transform: translateY(-4px); }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem; color: var(--gold); line-height: 1;
-  }
-  .stat-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rain); margin-top: 0.3rem; }
+/* ─── SERVICES ─── */
+/*
+  SERVICE SECTION BG: Subtle dark section, each card uses relevant emoji icon
+  Service cards use a thin top-border accent that reveals on hover
+*/
+#services{background:rgba(255,255,255,.012)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.2rem}
+.svc{
+  position:relative;overflow:hidden;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(91,184,245,.09);border-radius:14px;padding:2rem;
+  transition:all .35s;cursor:default;
+}
+.svc::before{
+  content:'';position:absolute;top:0;left:0;right:100%;height:2px;
+  background:linear-gradient(to right,var(--sky),var(--rain));
+  transition:right .4s;
+}
+.svc:hover::before{right:0}
+.svc:hover{transform:translateY(-6px);background:rgba(91,184,245,.045);border-color:rgba(91,184,245,.22)}
+.svc-icon{font-size:2.3rem;margin-bottom:1.1rem;display:block}
+.svc h3{font-size:1.15rem;font-weight:600;margin-bottom:.55rem}
+.svc p{font-size:.83rem;color:rgba(248,251,255,.52);line-height:1.65}
+.svc ul{margin-top:1.1rem;list-style:none;display:flex;flex-direction:column;gap:.38rem}
+.svc ul li{font-size:.78rem;color:rgba(248,251,255,.48);display:flex;align-items:center;gap:.45rem}
+.svc ul li::before{content:'→';color:var(--sky);font-size:.82rem}
+.svc.featured{background:linear-gradient(135deg,rgba(26,74,138,.38),rgba(45,125,210,.18));border-color:rgba(91,184,245,.28)}
 
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-    opacity: 0; animation: fadeIn 1s 1.2s forwards;
-  }
-  .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,251,255,0.4); }
-  .scroll-line {
-    width: 1px; height: 50px;
-    background: linear-gradient(to bottom, rgba(91,184,245,0.6), transparent);
-    animation: scrollPulse 2s infinite;
-  }
+/* ─── BEFORE / AFTER ─── */
+/*
+  PHOTO SELECTIONS for Before/After:
 
-  /* ── TRUST BAR ── */
-  .trust-bar {
-    background: rgba(255,255,255,0.03);
-    border-top: 1px solid rgba(91,184,245,0.1);
-    border-bottom: 1px solid rgba(91,184,245,0.1);
-    padding: 1.4rem 5%;
-    display: flex; align-items: center; justify-content: center; gap: 3rem;
-    flex-wrap: wrap;
-  }
-  .trust-item {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-size: 0.83rem; font-weight: 500; color: rgba(248,251,255,0.65);
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .trust-item span { font-size: 1.2rem; }
+  BEFORE photos (dirty, clogged, debris-filled gutters):
+  1. photo-1628348070889-cb656235b4eb — clogged dirty gutter full of leaves, dark
+  2. photo-1504307651254-35680f356dfd — roof with debris, weathered
+  3. photo-1589939705384-5185137a7f0f — leaves and mud in old gutter
 
-  /* ── SECTION COMMONS ── */
-  section { padding: 7rem 5%; }
-  .section-tag {
-    display: inline-block;
-    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--rain); margin-bottom: 0.8rem;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    line-height: 1; color: var(--white); margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-  }
-  .section-title .gold { color: var(--gold); }
-  .section-desc {
-    font-size: 1.05rem; font-weight: 300; color: rgba(248,251,255,0.65);
-    line-height: 1.75; max-width: 520px;
-  }
-  .divider {
-    width: 60px; height: 3px;
-    background: linear-gradient(to right, var(--sky), var(--rain));
-    margin: 1.2rem 0; border-radius: 3px;
-  }
+  AFTER photos (clean, installed, sparkling gutters):
+  1. photo-1600585154526-990dced4db0d — clean, new seamless gutters on white house
+  2. photo-1558618666-fcd25c85cd64 — beautiful house exterior, clean gutters
+  3. photo-1564013799919-ab600027ffc6 — stunning clean California home
+*/
+#gallery{}
+.ba-header{margin-bottom:3rem}
 
-  /* ── ABOUT ── */
-  #about {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
-    align-items: center;
-  }
-  .about-visual {
-    position: relative;
-  }
-  .about-main-img {
-    width: 100%; aspect-ratio: 4/5;
-    object-fit: cover; border-radius: 16px;
-    filter: brightness(0.9) contrast(1.05);
-  }
-  .about-accent-img {
-    position: absolute; bottom: -3rem; right: -3rem;
-    width: 55%; aspect-ratio: 1;
-    object-fit: cover; border-radius: 12px;
-    border: 4px solid var(--navy);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .about-badge-float {
-    position: absolute; top: 1.5rem; left: -2rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: var(--navy); padding: 0.8rem 1.2rem;
-    border-radius: 10px; font-weight: 700;
-    box-shadow: 0 12px 30px rgba(232,169,35,0.4);
-  }
-  .about-badge-float .big { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; display: block; line-height: 1; }
-  .about-badge-float .small { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .about-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-  .feature-row {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1rem 1.2rem; border-radius: 10px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(91,184,245,0.1);
-    transition: background 0.25s, border-color 0.25s, transform 0.25s;
-    cursor: default;
-  }
-  .feature-row:hover { background: rgba(91,184,245,0.06); border-color: rgba(91,184,245,0.25); transform: translateX(6px); }
-  .feature-icon {
-    width: 44px; height: 44px; min-width: 44px;
-    background: linear-gradient(135deg, rgba(45,125,210,0.3), rgba(91,184,245,0.15));
-    border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem;
-  }
-  .feature-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
-  .feature-text p { font-size: 0.82rem; color: rgba(248,251,255,0.55); line-height: 1.5; }
+/* Interactive drag slider */
+.slider-wrap{
+  position:relative;border-radius:16px;overflow:hidden;
+  max-width:950px;margin:0 auto 2.5rem;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.slider-container{
+  position:relative;aspect-ratio:16/7;overflow:hidden;user-select:none;cursor:col-resize;
+}
+.sl-before,.sl-after{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.sl-before{z-index:1}
+.sl-clip{position:absolute;inset:0;z-index:2;overflow:hidden;width:50%}
+.sl-clip img{width:950px;max-width:none;height:100%;object-fit:cover;object-position:left}
+.sl-line{
+  position:absolute;top:0;bottom:0;z-index:3;width:2px;
+  background:rgba(255,255,255,.9);left:50%;transform:translateX(-50%);
+  cursor:ew-resize;pointer-events:none;
+}
+.sl-handle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:white;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(0,0,0,.4);
+  font-size:1rem;pointer-events:none;color:var(--navy);font-weight:700;
+}
+.sl-labels{
+  position:absolute;top:1rem;z-index:4;width:100%;
+  display:flex;justify-content:space-between;padding:0 1.2rem;pointer-events:none;
+}
+.sl-labels span{
+  padding:.28rem .8rem;border-radius:40px;
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.lbl-before{background:rgba(239,68,68,.88);color:white}
+.lbl-after{background:rgba(34,197,94,.88);color:white}
+.slider-hint{
+  text-align:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(248,251,255,.3);margin-top:.6rem;
+}
 
-  /* ── SERVICES ── */
-  #services { background: rgba(255,255,255,0.015); }
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-    margin-top: 3.5rem;
-  }
-  .service-card {
-    position: relative; overflow: hidden;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(91,184,245,0.1);
-    border-radius: 14px; padding: 2.2rem;
-    transition: all 0.35s; cursor: default;
-  }
-  .service-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 100%; height: 2px;
-    background: linear-gradient(to right, var(--sky), var(--rain));
-    transition: right 0.4s;
-  }
-  .service-card:hover::before { right: 0; }
-  .service-card:hover { transform: translateY(-6px); background: rgba(91,184,245,0.05); border-color: rgba(91,184,245,0.25); }
-  .service-card-icon {
-    font-size: 2.5rem; margin-bottom: 1.2rem; display: block;
-  }
-  .service-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.6rem; }
-  .service-card p { font-size: 0.85rem; color: rgba(248,251,255,0.55); line-height: 1.65; }
-  .service-card .service-list {
-    margin-top: 1.2rem; list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
-  }
-  .service-card .service-list li {
-    font-size: 0.8rem; color: rgba(248,251,255,0.5);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .service-card .service-list li::before { content: '→'; color: var(--sky); font-size: 0.85rem; }
-  .service-card.featured {
-    background: linear-gradient(135deg, rgba(26,74,138,0.4), rgba(45,125,210,0.2));
-    border-color: rgba(91,184,245,0.3);
-    grid-row: span 1;
-  }
+/* Photo grid */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.ba-card{
+  position:relative;border-radius:13px;overflow:hidden;
+  aspect-ratio:4/3;cursor:pointer;
+}
+.ba-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s;display:block;
+}
+.ba-card:hover img{transform:scale(1.07)}
+.ba-lbl{
+  position:absolute;top:.9rem;left:.9rem;
+  padding:.28rem .75rem;border-radius:40px;
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  z-index:2;
+}
+.ba-lbl.b{background:rgba(239,68,68,.88);color:white}
+.ba-lbl.a{background:rgba(34,197,94,.88);color:white}
+.ba-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(7,17,31,.88) 0%,transparent 55%);
+  opacity:0;transition:opacity .35s;
+}
+.ba-card:hover .ba-overlay{opacity:1}
+.ba-cap{
+  position:absolute;bottom:1rem;left:1rem;right:1rem;
+  opacity:0;transform:translateY(8px);transition:all .35s;
+  font-size:.82rem;font-weight:500;
+}
+.ba-card:hover .ba-cap{opacity:1;transform:translateY(0)}
 
-  /* ── BEFORE / AFTER ── */
-  #gallery { }
-  .before-after-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
-    margin-top: 3.5rem;
-  }
-  .ba-card {
-    position: relative; border-radius: 14px; overflow: hidden;
-    aspect-ratio: 4/3; cursor: pointer;
-  }
-  .ba-card img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s;
-  }
-  .ba-card:hover img { transform: scale(1.06); }
-  .ba-label {
-    position: absolute; top: 1rem; left: 1rem;
-    padding: 0.3rem 0.8rem; border-radius: 40px;
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  }
-  .ba-label.before { background: rgba(239,68,68,0.85); color: white; }
-  .ba-label.after { background: rgba(34,197,94,0.85); color: white; }
-  .ba-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, transparent 60%);
-    opacity: 0; transition: opacity 0.35s;
-  }
-  .ba-card:hover .ba-overlay { opacity: 1; }
-  .ba-caption {
-    position: absolute; bottom: 1.2rem; left: 1.2rem; right: 1.2rem;
-    opacity: 0; transform: translateY(10px); transition: all 0.35s;
-    font-size: 0.85rem; font-weight: 500; color: var(--white);
-  }
-  .ba-card:hover .ba-caption { opacity: 1; transform: translateY(0); }
+/* ─── TESTIMONIALS ─── */
+#testimonials{background:rgba(255,255,255,.012);overflow:hidden}
+.ttrack-wrap{overflow:hidden;margin-top:3rem}
+.ttrack{
+  display:flex;gap:1.4rem;
+  animation:scrollTrack 38s linear infinite;width:max-content;
+}
+.ttrack:hover{animation-play-state:paused}
+.tcard{
+  width:370px;min-width:370px;
+  background:rgba(255,255,255,.038);border:1px solid rgba(91,184,245,.11);
+  border-radius:14px;padding:1.8rem;flex-shrink:0;
+}
+.tcard-stars{color:var(--gold);font-size:.95rem;margin-bottom:.9rem;letter-spacing:.08em}
+.tcard-text{font-size:.86rem;color:rgba(248,251,255,.68);line-height:1.72;font-style:italic;margin-bottom:1.1rem}
+.tcard-author{display:flex;align-items:center;gap:.75rem}
+.tcard-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--sky));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.85rem;flex-shrink:0;
+}
+.tcard-info h5{font-size:.86rem;font-weight:600}
+.tcard-info span{font-size:.73rem;color:var(--rain)}
+.tcard-src{font-size:.7rem;color:rgba(248,251,255,.28);margin-top:.12rem}
 
-  /* Slider BA */
-  .ba-slider-wrap {
-    margin-top: 2.5rem;
-    position: relative; border-radius: 16px; overflow: hidden;
-    max-width: 900px; margin-left: auto; margin-right: auto;
-  }
-  .ba-slider-container {
-    position: relative; aspect-ratio: 16/7; overflow: hidden;
-    user-select: none;
-  }
-  .ba-img-before, .ba-img-after {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover;
-  }
-  .ba-img-before { z-index: 1; }
-  .ba-clip { position: absolute; inset: 0; z-index: 2; overflow: hidden; }
-  .ba-clip img { width: 100%; height: 100%; object-fit: cover; }
-  .ba-divider-line {
-    position: absolute; top: 0; bottom: 0; z-index: 3;
-    width: 2px; background: white; cursor: ew-resize;
-    transform: translateX(-50%);
-  }
-  .ba-handle {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-    width: 44px; height: 44px; border-radius: 50%;
-    background: white; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-    font-size: 1.1rem; cursor: ew-resize;
-  }
-  .ba-labels-overlay {
-    position: absolute; top: 1rem; z-index: 4;
-    width: 100%; display: flex; justify-content: space-between; padding: 0 1.2rem;
-    pointer-events: none;
-  }
-  .ba-labels-overlay span {
-    padding: 0.3rem 0.8rem; border-radius: 40px;
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  }
-  .ba-labels-overlay .before-lbl { background: rgba(239,68,68,0.85); color: white; }
-  .ba-labels-overlay .after-lbl { background: rgba(34,197,94,0.85); color: white; }
+/* ─── WHY US ─── */
+/*
+  WHY US PHOTOS:
+  MAIN: Worker in safety gear on roof — professional, trustworthy
+  photo-1504307651254-35680f356dfd — contractor on ladder (reused, different crop)
+  FLOAT: Beautiful LA house exterior, nice gutters
+  photo-1564013799919-ab600027ffc6
+*/
+#why{display:grid;grid-template-columns:1fr 1fr;gap:5.5rem;align-items:center}
+.why-imgs{position:relative}
+.why-main{width:90%;aspect-ratio:3/4;object-fit:cover;border-radius:16px;display:block}
+.why-float{
+  position:absolute;bottom:-2.5rem;right:0;
+  width:50%;aspect-ratio:1;object-fit:cover;
+  border-radius:12px;border:4px solid var(--navy);
+  box-shadow:0 20px 55px rgba(0,0,0,.5);
+}
+.why-items{display:flex;flex-direction:column;gap:1.4rem;margin-top:2.2rem}
+.why-item{display:grid;grid-template-columns:2.8rem 1fr;gap:.9rem;align-items:start}
+.why-n{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:rgba(91,184,245,.22);line-height:1}
+.why-item h4{font-size:.96rem;font-weight:600;margin-bottom:.25rem}
+.why-item p{font-size:.81rem;color:rgba(248,251,255,.52);line-height:1.6}
+.coverage{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.ctag{
+  background:rgba(45,125,210,.14);border:1px solid rgba(91,184,245,.18);
+  padding:.32rem .85rem;border-radius:40px;
+  font-size:.76rem;font-weight:500;color:rgba(248,251,255,.68);
+}
 
-  /* ── TESTIMONIALS ── */
-  #testimonials { background: rgba(255,255,255,0.015); overflow: hidden; }
-  .testimonials-track-wrap { overflow: hidden; margin-top: 3.5rem; }
-  .testimonials-track {
-    display: flex; gap: 1.5rem;
-    animation: scrollTrack 35s linear infinite;
-    width: max-content;
-  }
-  .testimonials-track:hover { animation-play-state: paused; }
-  .testi-card {
-    width: 380px; min-width: 380px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(91,184,245,0.12);
-    border-radius: 14px; padding: 2rem;
-    flex-shrink: 0;
-  }
-  .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
-  .testi-text { font-size: 0.88rem; color: rgba(248,251,255,0.7); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
-  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
-  .testi-avatar {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--sky));
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 0.9rem;
-  }
-  .testi-info h5 { font-size: 0.88rem; font-weight: 600; }
-  .testi-info span { font-size: 0.75rem; color: var(--rain); }
-  .testi-source { font-size: 0.72rem; color: rgba(248,251,255,0.3); margin-top: 0.2rem; }
+/* ─── GALLERY / PHOTO SHOWCASE ─── */
+/*
+  Full-width photo showcase — atmospheric section with 3 large background-style photos
+  showing the range: before (clogged), during (worker), after (clean house)
+*/
+#showcase{padding:0}
+.showcase-grid{display:grid;grid-template-columns:1fr 1fr 1fr;height:500px}
+.showcase-panel{
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.showcase-panel img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s;filter:brightness(.65);
+}
+.showcase-panel:hover img{transform:scale(1.06);filter:brightness(.55)}
+.showcase-panel-content{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2rem;
+  background:linear-gradient(to top,rgba(7,17,31,.85) 0%,transparent 60%);
+}
+.showcase-panel-content h3{
+  font-family:'Bebas Neue',sans-serif;font-size:1.9rem;
+  letter-spacing:.05em;line-height:1;margin-bottom:.4rem;
+}
+.showcase-panel-content p{font-size:.82rem;color:rgba(248,251,255,.6);line-height:1.5}
+.showcase-tag{
+  display:inline-block;margin-bottom:.7rem;
+  padding:.25rem .7rem;border-radius:40px;
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.stag-before{background:rgba(239,68,68,.8);color:white}
+.stag-during{background:rgba(45,125,210,.85);color:white}
+.stag-after{background:rgba(34,197,94,.8);color:white}
 
-  /* ── WHY US ── */
-  #why { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-  .why-img-stack { position: relative; }
-  .why-main-img {
-    width: 90%; aspect-ratio: 3/4; object-fit: cover;
-    border-radius: 16px; display: block;
-  }
-  .why-float-img {
-    position: absolute; bottom: -2rem; right: 0;
-    width: 50%; aspect-ratio: 1;
-    object-fit: cover; border-radius: 12px;
-    border: 4px solid var(--navy);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .why-items { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
-  .why-item {
-    display: grid; grid-template-columns: 3rem 1fr;
-    gap: 1rem; align-items: start;
-  }
-  .why-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.2rem; color: rgba(91,184,245,0.25);
-    line-height: 1;
-  }
-  .why-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-  .why-item p { font-size: 0.83rem; color: rgba(248,251,255,0.55); line-height: 1.6; }
+/* ─── PRICING ─── */
+#pricing{text-align:center}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.2rem;text-align:left}
+.pcard{
+  background:rgba(255,255,255,.028);border:1px solid rgba(91,184,245,.11);
+  border-radius:16px;padding:2.4rem;
+  transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;
+}
+.pcard::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,var(--sky),var(--rain));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.pcard:hover::after{transform:scaleX(1)}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.28)}
+.pcard.pop{
+  background:linear-gradient(135deg,rgba(26,74,138,.48),rgba(45,125,210,.22));
+  border-color:rgba(91,184,245,.32);transform:scale(1.03);
+}
+.pcard.pop:hover{transform:scale(1.03) translateY(-6px)}
+.pop-badge{
+  display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);font-size:.65rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:.22rem .75rem;border-radius:40px;margin-bottom:.9rem;
+}
+.p-tier{font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--rain);margin-bottom:.45rem}
+.p-name{font-size:1.35rem;font-weight:700;margin-bottom:.75rem}
+.p-val{font-family:'Bebas Neue',sans-serif;font-size:2.9rem;color:var(--white);line-height:1}
+.p-val span{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:300;color:rgba(248,251,255,.45)}
+.p-note{font-size:.73rem;color:rgba(248,251,255,.38);margin-bottom:1.6rem}
+.p-div{height:1px;background:rgba(91,184,245,.09);margin-bottom:1.4rem}
+.p-feats{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem}
+.p-feats li{font-size:.83rem;color:rgba(248,251,255,.68);display:flex;align-items:center;gap:.55rem}
+.p-feats li::before{content:'✓';color:var(--rain);font-weight:700}
+.btn-p{
+  display:block;text-align:center;padding:.82rem;
+  border-radius:8px;font-weight:600;font-size:.88rem;
+  text-decoration:none;transition:all .25s;cursor:pointer;border:none;
+  font-family:'DM Sans',sans-serif;
+}
+.btn-p-out{background:transparent;color:var(--white);border:1.5px solid rgba(91,184,245,.32)}
+.btn-p-out:hover{background:rgba(91,184,245,.1);border-color:var(--rain)}
+.btn-p-fill{background:linear-gradient(135deg,var(--sky),var(--rain));color:var(--white)}
+.btn-p-fill:hover{box-shadow:0 8px 24px rgba(45,125,210,.5);transform:translateY(-2px)}
 
-  /* ── PRICING ── */
-  #pricing { text-align: center; }
-  .pricing-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem; margin-top: 3.5rem; text-align: left;
-  }
-  .price-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(91,184,245,0.12);
-    border-radius: 16px; padding: 2.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative; overflow: hidden;
-  }
-  .price-card::after {
-    content: ''; position: absolute;
-    bottom: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(to right, var(--sky), var(--rain));
-    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
-  }
-  .price-card:hover::after { transform: scaleX(1); }
-  .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-  .price-card.popular {
-    background: linear-gradient(135deg, rgba(26,74,138,0.5), rgba(45,125,210,0.25));
-    border-color: rgba(91,184,245,0.35);
-    transform: scale(1.03);
-  }
-  .price-card.popular:hover { transform: scale(1.03) translateY(-6px); }
-  .popular-badge {
-    display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: var(--navy); font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 0.25rem 0.8rem; border-radius: 40px; margin-bottom: 1rem;
-  }
-  .price-tier { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rain); margin-bottom: 0.5rem; }
-  .price-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.8rem; }
-  .price-val { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); line-height: 1; }
-  .price-val span { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 300; color: rgba(248,251,255,0.5); }
-  .price-note { font-size: 0.75rem; color: rgba(248,251,255,0.4); margin-bottom: 1.8rem; }
-  .price-divider { height: 1px; background: rgba(91,184,245,0.1); margin-bottom: 1.5rem; }
-  .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
-  .price-features li {
-    font-size: 0.85rem; color: rgba(248,251,255,0.7);
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .price-features li::before { content: '✓'; color: var(--rain); font-weight: 700; }
-  .btn-price {
-    display: block; text-align: center; padding: 0.85rem;
-    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-    text-decoration: none; transition: all 0.25s; cursor: pointer;
-    border: none;
-  }
-  .btn-price-outline {
-    background: transparent; color: var(--white);
-    border: 1.5px solid rgba(91,184,245,0.35);
-  }
-  .btn-price-outline:hover { background: rgba(91,184,245,0.1); border-color: var(--rain); }
-  .btn-price-primary {
-    background: linear-gradient(135deg, var(--sky), var(--rain));
-    color: var(--white);
-  }
-  .btn-price-primary:hover { box-shadow: 0 8px 24px rgba(45,125,210,0.5); transform: translateY(-2px); }
+/* ─── CONTACT ─── */
+/*
+  CONTACT section bg uses a subtle rain/gutter atmospheric photo as a faded overlay
+  photo-1558618666-fcd25c85cd64 — house with rain/gutters running
+*/
+#contact{
+  position:relative;overflow:hidden;
+}
+#contact::before{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(135deg,rgba(7,17,31,.97) 40%,rgba(26,74,138,.3) 100%),
+    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+  pointer-events:none;
+}
+.contact-inner{position:relative;z-index:1}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5.5rem;align-items:start}
+.c-info{display:flex;flex-direction:column;gap:1.8rem}
+.c-item{display:flex;gap:1.1rem;align-items:flex-start}
+.c-icon{
+  width:50px;height:50px;min-width:50px;
+  background:rgba(45,125,210,.14);border:1px solid rgba(91,184,245,.18);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;
+}
+.c-detail h4{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--rain);margin-bottom:.28rem}
+.c-detail a,.c-detail p{font-size:.97rem;font-weight:500;color:var(--white);text-decoration:none}
+.c-detail a:hover{color:var(--rain)}
+.c-detail .sub{font-size:.76rem;color:rgba(248,251,255,.42);margin-top:.12rem}
+.c-form{background:rgba(255,255,255,.032);border:1px solid rgba(91,184,245,.11);border-radius:16px;padding:2.4rem}
+.c-form h3{font-size:1.25rem;font-weight:600;margin-bottom:1.6rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rain);margin-bottom:.45rem}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:rgba(255,255,255,.045);
+  border:1px solid rgba(91,184,245,.14);border-radius:8px;
+  padding:.72rem .95rem;color:var(--white);
+  font-family:'DM Sans',sans-serif;font-size:.88rem;
+  transition:border-color .25s,background .25s;outline:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:rgba(91,184,245,.48);background:rgba(91,184,245,.055);
+}
+.fg select option{background:var(--deep)}
+.fg textarea{resize:vertical;min-height:95px}
+.f-submit{
+  width:100%;padding:.88rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);font-weight:700;font-size:.97rem;
+  border:none;border-radius:8px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;letter-spacing:.04em;
+  transition:transform .2s,box-shadow .2s;
+}
+.f-submit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(232,169,35,.45)}
 
-  /* ── CONTACT ── */
-  #contact {
-    background: linear-gradient(135deg, rgba(26,74,138,0.25) 0%, rgba(10,22,40,1) 60%);
-    position: relative; overflow: hidden;
-  }
-  #contact::before {
-    content: '';
-    position: absolute; top: -50%; right: -20%;
-    width: 700px; height: 700px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(45,125,210,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .contact-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
-    align-items: start;
-  }
-  .contact-info { display: flex; flex-direction: column; gap: 2rem; }
-  .contact-item {
-    display: flex; gap: 1.2rem; align-items: flex-start;
-  }
-  .contact-icon {
-    width: 52px; height: 52px; min-width: 52px;
-    background: rgba(45,125,210,0.15);
-    border: 1px solid rgba(91,184,245,0.2);
-    border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
-  }
-  .contact-detail h4 { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rain); margin-bottom: 0.3rem; }
-  .contact-detail a, .contact-detail p { font-size: 1rem; font-weight: 500; color: var(--white); text-decoration: none; }
-  .contact-detail a:hover { color: var(--rain); }
-  .contact-detail .sub { font-size: 0.78rem; color: rgba(248,251,255,0.45); margin-top: 0.15rem; }
-  .contact-form { background: rgba(255,255,255,0.03); border: 1px solid rgba(91,184,245,0.12); border-radius: 16px; padding: 2.5rem; }
-  .contact-form h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.8rem; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-group { margin-bottom: 1.2rem; }
-  .form-group label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rain); margin-bottom: 0.5rem; }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%; background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(91,184,245,0.15);
-    border-radius: 8px; padding: 0.75rem 1rem;
-    color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    transition: border-color 0.25s, background 0.25s;
-    outline: none;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: rgba(91,184,245,0.5); background: rgba(91,184,245,0.06);
-  }
-  .form-group select option { background: var(--deep); }
-  .form-group textarea { resize: vertical; min-height: 100px; }
-  .form-submit {
-    width: 100%; padding: 0.9rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: var(--navy); font-weight: 700; font-size: 1rem;
-    border: none; border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif;
-    transition: transform 0.2s, box-shadow 0.2s;
-    letter-spacing: 0.04em;
-  }
-  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,169,35,0.45); }
+/* ─── FOOTER ─── */
+footer{
+  background:rgba(4,9,18,1);
+  border-top:1px solid rgba(91,184,245,.09);
+  padding:3.2rem 5% 1.8rem;
+}
+.foot-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;
+  padding-bottom:2.8rem;border-bottom:1px solid rgba(91,184,245,.07);
+  margin-bottom:1.8rem;
+}
+.foot-brand p{font-size:.8rem;color:rgba(248,251,255,.4);line-height:1.7;margin-top:.9rem;max-width:250px}
+.foot-col h5{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rain);margin-bottom:1.1rem}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.foot-col ul a{font-size:.8rem;color:rgba(248,251,255,.45);text-decoration:none;transition:color .2s}
+.foot-col ul a:hover{color:var(--white)}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;font-size:.76rem;color:rgba(248,251,255,.27)}
+.foot-bottom a{color:var(--rain);text-decoration:none}
 
-  /* ── FOOTER ── */
-  footer {
-    background: rgba(5,12,24,1);
-    border-top: 1px solid rgba(91,184,245,0.1);
-    padding: 3.5rem 5% 2rem;
-  }
-  .footer-top {
-    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 3rem; padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(91,184,245,0.08);
-    margin-bottom: 2rem;
-  }
-  .footer-brand p { font-size: 0.83rem; color: rgba(248,251,255,0.45); line-height: 1.7; margin-top: 1rem; max-width: 260px; }
-  .footer-col h5 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rain); margin-bottom: 1.2rem; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-  .footer-col ul a { font-size: 0.83rem; color: rgba(248,251,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .footer-col ul a:hover { color: var(--white); }
-  .footer-bottom {
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 0.78rem; color: rgba(248,251,255,0.3);
-  }
-  .footer-bottom a { color: var(--rain); text-decoration: none; }
+/* ─── FLOATING CTA ─── */
+.float-cta{position:fixed;bottom:1.8rem;right:1.8rem;z-index:99}
+.float-phone{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.72rem 1.35rem;border-radius:50px;
+  font-weight:600;font-size:.86rem;text-decoration:none;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);box-shadow:0 8px 28px rgba(232,169,35,.4);
+  transition:transform .2s,box-shadow .2s;
+}
+.float-phone:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(232,169,35,.55)}
 
-  /* ── FLOATING CTA ── */
-  .float-cta {
-    position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
-    display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-end;
-  }
-  .float-btn {
-    display: flex; align-items: center; gap: 0.6rem;
-    padding: 0.75rem 1.4rem; border-radius: 50px;
-    font-weight: 600; font-size: 0.88rem; text-decoration: none;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .float-btn:hover { transform: translateY(-3px); }
-  .float-phone {
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: var(--navy);
-  }
-  .float-phone:hover { box-shadow: 0 12px 32px rgba(232,169,35,0.5); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.2); }
-  }
-  @keyframes scrollTrack {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* Scroll-reveal */
-  .reveal {
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-
-  /* ── SECTION HEADER LAYOUT ── */
-  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 0; flex-wrap: wrap; gap: 1.5rem; }
-  .section-header-left {}
-  .header-cta { align-self: flex-end; }
-
-  /* Area coverage */
-  .coverage-list {
-    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem;
-  }
-  .coverage-tag {
-    background: rgba(45,125,210,0.15);
-    border: 1px solid rgba(91,184,245,0.2);
-    padding: 0.35rem 0.9rem; border-radius: 40px;
-    font-size: 0.78rem; font-weight: 500; color: rgba(248,251,255,0.7);
-  }
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes scrollTrack{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .7s,transform .7s}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="navbar">
+<nav id="nav">
   <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">🌧️</div>
+    <div class="nav-logo-mark">🌧️</div>
     <div class="nav-logo-text">
-      <span>Spotless Rain</span>
-      <span>Gutter Cleaning</span>
+      <b>Spotless Rain</b>
+      <small>Gutter Cleaning · LA</small>
     </div>
   </a>
   <ul class="nav-links">
@@ -672,570 +591,539 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ══════════════ HERO ══════════════
+     PHOTO: Contractor on ladder doing roof work — shows professionalism
+     Source: Unsplash / Erik Mclean — photo-1504307651254-35680f356dfd
+-->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="rain-overlay"></div>
+  <div class="rain-lines"></div>
   <div class="hero-content">
-    <div class="hero-badge">Los Angeles's #1 Rated Gutter Service</div>
+    <div class="hero-badge">Los Angeles's Top-Rated Gutter Service</div>
     <h1 class="hero-title">
-      KEEP YOUR<br>
-      HOME <span class="accent">RAIN</span><br>
-      <span class="gold-accent">READY</span>
+      KEEP YOUR<br>HOME <span class="accent">RAIN</span><br><span class="gold">READY.</span>
     </h1>
-    <p class="hero-sub">Professional gutter cleaning, installation & repair across Los Angeles. Family-owned, 6+ years of experience, and a 5-star reputation built on trust.</p>
-    <div class="hero-actions">
-      <a href="tel:4242286973" class="btn-primary">📞 (424) 228-6973</a>
-      <a href="#gallery" class="btn-secondary">View Our Work →</a>
+    <p class="hero-sub">Professional gutter cleaning, repair & installation across Los Angeles. Family-owned since 2020, 5-star rated, and available 24/7 for emergencies.</p>
+    <div class="hero-btns">
+      <a href="tel:4242286973" class="btn-gold">📞 (424) 228-6973</a>
+      <a href="#gallery" class="btn-ghost">See Our Work →</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat-card">
-      <div class="stat-num">5★</div>
-      <div class="stat-label">Avg Rating</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">500+</div>
-      <div class="stat-label">Jobs Done</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Emergency</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Years Exp.</div>
-    </div>
+    <div class="stat-card"><div class="stat-n">5★</div><div class="stat-l">Avg Rating</div></div>
+    <div class="stat-card"><div class="stat-n">500+</div><div class="stat-l">Jobs Done</div></div>
+    <div class="stat-card"><div class="stat-n">24/7</div><div class="stat-l">Emergency</div></div>
+    <div class="stat-card"><div class="stat-n">6+</div><div class="stat-l">Yrs Exp.</div></div>
   </div>
   <div class="hero-scroll">
-    <div class="scroll-line"></div>
+    <div class="scroll-bar"></div>
     <span>Scroll</span>
   </div>
 </section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item"><span>✅</span> Licensed & Insured</div>
-  <div class="trust-item"><span>⚡</span> Same-Day Available</div>
-  <div class="trust-item"><span>📸</span> Before & After Photos</div>
-  <div class="trust-item"><span>🆓</span> Free Estimates</div>
-  <div class="trust-item"><span>🏠</span> Family-Owned</div>
-  <div class="trust-item"><span>🚨</span> 24/7 Emergency Service</div>
+  <div class="trust-item">✅ Licensed & Insured</div>
+  <div class="trust-item">⚡ Same-Day Service</div>
+  <div class="trust-item">📸 Before & After Photos</div>
+  <div class="trust-item">🆓 Free Estimates</div>
+  <div class="trust-item">🏠 Family-Owned</div>
+  <div class="trust-item">🚨 24/7 Emergency</div>
 </div>
 
-<!-- ABOUT -->
+<!-- ══════════════ ABOUT ══════════════
+     MAIN PHOTO: Close-up of person scooping leaves from gutter (action shot)
+     Unsplash photo-1607400201515-c2c41c07d307
+
+     ACCENT PHOTO: New clean seamless aluminum gutters on a home
+     Unsplash photo-1600585154526-990dced4db0d
+-->
 <section id="about">
   <div class="about-visual reveal">
     <img class="about-main-img"
-      src="https://images.unsplash.com/photo-1607400201515-c2c41c07d307?w=800&q=80"
-      alt="Gutter cleaning professional at work"
+      src="https://images.unsplash.com/photo-1607400201515-c2c41c07d307?w=800&q=85"
+      alt="Close-up of gutter full of leaves being cleaned"
+      loading="lazy"
     />
     <img class="about-accent-img"
-      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80"
-      alt="Clean gutters on a home"
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=500&q=85"
+      alt="Clean new seamless gutters on a house"
+      loading="lazy"
     />
-    <div class="about-badge-float">
+    <div class="about-yrs">
       <span class="big">6+</span>
-      <span class="small">Years Experience</span>
+      <span class="sm">Years Experience</span>
     </div>
   </div>
   <div>
-    <span class="section-tag reveal">About Us</span>
-    <h2 class="section-title reveal reveal-delay-1">BUILT ON <span class="gold">TRUST</span> &amp;<br>HARD WORK</h2>
-    <div class="divider reveal reveal-delay-2"></div>
-    <p class="section-desc reveal reveal-delay-2">Founded in 2020 by Erick Lopez during the pandemic, Spotless Rain Gutter Cleaning has grown into one of Los Angeles's most trusted gutter service companies. We're a family-owned small business — honest, humble, hardworking, and always putting customers first.</p>
-    <div class="about-features">
-      <div class="feature-row reveal reveal-delay-2">
-        <div class="feature-icon">🏡</div>
-        <div class="feature-text">
-          <h4>Family-Owned & Operated</h4>
-          <p>Erick personally oversees every job. Small business values, big results.</p>
-        </div>
+    <span class="stag reveal">About Us</span>
+    <h2 class="stitle reveal d1">BUILT ON <span class="gold">TRUST</span><br>& HARD WORK</h2>
+    <div class="divider reveal d2"></div>
+    <p class="sdesc reveal d2">Founded in 2020 by Erick Lopez during the pandemic, Spotless Rain Gutter Cleaning has grown into one of LA's most trusted gutter companies. Small business values — honest, humble, and always putting customers first.</p>
+    <div class="feat-list">
+      <div class="feat reveal d2">
+        <div class="feat-icon">🏡</div>
+        <div><h4>Family-Owned & Operated</h4><p>Erick personally oversees every job. Big results, small business heart.</p></div>
       </div>
-      <div class="feature-row reveal reveal-delay-3">
-        <div class="feature-icon">📸</div>
-        <div class="feature-text">
-          <h4>Before & After Documentation</h4>
-          <p>We photograph every job so you can see exactly what we did.</p>
-        </div>
+      <div class="feat reveal d3">
+        <div class="feat-icon">📸</div>
+        <div><h4>Before & After Documentation</h4><p>Every job is photographed so you see exactly what was done.</p></div>
       </div>
-      <div class="feature-row reveal reveal-delay-4">
-        <div class="feature-icon">🔧</div>
-        <div class="feature-text">
-          <h4>No Upselling, Ever</h4>
-          <p>Honest assessments. We only recommend what your gutters actually need.</p>
-        </div>
+      <div class="feat reveal d4">
+        <div class="feat-icon">🔧</div>
+        <div><h4>No Upselling — Ever</h4><p>Honest assessments. We recommend only what your gutters actually need.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ══════════════ SERVICES ══════════════ -->
 <section id="services">
-  <div class="section-header">
-    <div class="section-header-left">
-      <span class="section-tag reveal">What We Do</span>
-      <h2 class="section-title reveal reveal-delay-1">OUR <span class="gold">SERVICES</span></h2>
+  <div class="sec-header">
+    <div>
+      <span class="stag reveal">What We Do</span>
+      <h2 class="stitle reveal d1">OUR <span class="gold">SERVICES</span></h2>
     </div>
-    <a href="#contact" class="btn-secondary header-cta reveal">Get a Free Quote →</a>
+    <a href="#contact" class="btn-ghost reveal" style="align-self:flex-end">Get a Free Quote →</a>
   </div>
   <div class="services-grid">
-    <div class="service-card featured reveal">
-      <span class="service-card-icon">🌊</span>
+    <div class="svc featured reveal">
+      <span class="svc-icon">🌊</span>
       <h3>Gutter Cleaning</h3>
-      <p>Complete removal of leaves, debris, and blockages. We flush downspouts and ensure everything flows freely before we leave.</p>
-      <ul class="service-list">
-        <li>Full debris removal</li>
-        <li>Downspout flushing & inspection</li>
-        <li>Before & after photos included</li>
-        <li>Yard cleanup included</li>
-      </ul>
+      <p>Full removal of leaves, debris, and blockages. We flush downspouts and confirm everything flows before we leave.</p>
+      <ul><li>Full debris removal</li><li>Downspout flush & check</li><li>Before & after photos</li><li>Complete yard cleanup</li></ul>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <span class="service-card-icon">🔩</span>
+    <div class="svc reveal d1">
+      <span class="svc-icon">🔩</span>
       <h3>Gutter Installation</h3>
-      <p>New seamless gutters installed in 5" & 6" OG, box, and fascia styles. Aluminum, copper, and custom options available.</p>
-      <ul class="service-list">
-        <li>5" & 6" OG, box & fascia styles</li>
-        <li>Custom downspout sizes</li>
-        <li>Leader head installation</li>
-        <li>Seamless aluminum & copper</li>
-      </ul>
+      <p>New seamless gutters in 5" & 6" OG, box, and fascia styles. Aluminum, copper, and custom options.</p>
+      <ul><li>5" & 6" OG, box & fascia</li><li>Custom downspout sizes</li><li>Leader head installation</li><li>Seamless aluminum & copper</li></ul>
     </div>
-    <div class="service-card reveal reveal-delay-2">
-      <span class="service-card-icon">🛠️</span>
+    <div class="svc reveal d2">
+      <span class="svc-icon">🛠️</span>
       <h3>Gutter Repair</h3>
-      <p>Sagging, leaking, or damaged gutters fixed fast. We handle everything from minor adjustments to full section replacements.</p>
-      <ul class="service-list">
-        <li>Re-pitch & re-hang</li>
-        <li>Leak & joint sealing</li>
-        <li>Section replacement</li>
-        <li>Downspout reconnection</li>
-      </ul>
+      <p>Sagging, leaking, or damaged gutters fixed fast. Minor adjustments to full section replacements.</p>
+      <ul><li>Re-pitch & re-hang</li><li>Leak & joint sealing</li><li>Section replacement</li><li>Downspout reconnection</li></ul>
     </div>
-    <div class="service-card reveal">
-      <span class="service-card-icon">🏠</span>
+    <div class="svc reveal">
+      <span class="svc-icon">🏠</span>
       <h3>Roof Cleaning</h3>
-      <p>Soft-wash roof cleaning to remove moss, algae, and buildup. Protects your roof and extends its life significantly.</p>
-      <ul class="service-list">
-        <li>Moss & algae removal</li>
-        <li>Soft-wash method</li>
-        <li>Safe for all roof types</li>
-      </ul>
+      <p>Soft-wash cleaning removes moss, algae, and buildup — extending your roof's life significantly.</p>
+      <ul><li>Moss & algae removal</li><li>Safe soft-wash method</li><li>All roof types</li></ul>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <span class="service-card-icon">☀️</span>
+    <div class="svc reveal d1">
+      <span class="svc-icon">☀️</span>
       <h3>Solar Panel Cleaning</h3>
-      <p>Maximize your solar panel efficiency with professional cleaning that removes dust, grime, and bird droppings.</p>
-      <ul class="service-list">
-        <li>Spot-free rinse</li>
-        <li>Safe non-abrasive tools</li>
-        <li>Efficiency-boosting clean</li>
-      </ul>
+      <p>Maximize solar efficiency by removing dust, grime, and bird droppings with non-abrasive tools.</p>
+      <ul><li>Spot-free rinse</li><li>Non-abrasive tools</li><li>Efficiency-boosting clean</li></ul>
     </div>
-    <div class="service-card reveal reveal-delay-2">
-      <span class="service-card-icon">🚨</span>
-      <h3>24/7 Emergency Service</h3>
-      <p>Gutters don't wait for business hours. When storms hit, we're available around the clock to protect your home.</p>
-      <ul class="service-list">
-        <li>Same-day response</li>
-        <li>Storm damage priority</li>
-        <li>Rapid clog clearing</li>
-      </ul>
+    <div class="svc reveal d2">
+      <span class="svc-icon">🚨</span>
+      <h3>24/7 Emergency</h3>
+      <p>Gutters don't wait for business hours. We're available around the clock when storms hit LA.</p>
+      <ul><li>Same-day response</li><li>Storm damage priority</li><li>Rapid clog clearing</li></ul>
     </div>
   </div>
 </section>
 
-<!-- BEFORE / AFTER GALLERY -->
-<section id="gallery">
-  <div class="section-header">
-    <div class="section-header-left">
-      <span class="section-tag reveal">Our Work</span>
-      <h2 class="section-title reveal reveal-delay-1">BEFORE <span class="gold">&amp; AFTER</span></h2>
-      <p class="section-desc reveal reveal-delay-2" style="margin-top:0.5rem;">Real jobs, real results. See the transformation we deliver on every single project.</p>
+<!-- ══════════════ SHOWCASE PANELS (full-width atmospheric) ══════════════
+     Panel 1 BEFORE — Dirty clogged gutter close-up full of leaves & debris
+     Unsplash: photo-1628348070889-cb656235b4eb (dark roof, leaves, debris)
+
+     Panel 2 DURING — Worker on ladder cleaning gutter in action
+     Unsplash: photo-1504307651254-35680f356dfd (contractor on roof ladder)
+
+     Panel 3 AFTER — Beautiful clean California home with pristine gutters
+     Unsplash: photo-1564013799919-ab600027ffc6 (gorgeous clean LA home exterior)
+-->
+<section id="showcase">
+  <div class="showcase-grid">
+    <div class="showcase-panel">
+      <img
+        src="https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=800&q=85"
+        alt="Clogged gutter filled with autumn leaves and debris before cleaning"
+        loading="lazy"
+      />
+      <div class="showcase-panel-content">
+        <span class="showcase-tag stag-before">Before</span>
+        <h3>Clogged & Overflowing</h3>
+        <p>Leaves, debris & standing water blocking your drainage system</p>
+      </div>
+    </div>
+    <div class="showcase-panel">
+      <img
+        src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85"
+        alt="Professional technician cleaning gutters on a ladder"
+        loading="lazy"
+      />
+      <div class="showcase-panel-content">
+        <span class="showcase-tag stag-during">During</span>
+        <h3>Expert in Action</h3>
+        <p>Erick's trained crew works fast, safe, and thoroughly every time</p>
+      </div>
+    </div>
+    <div class="showcase-panel">
+      <img
+        src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=85"
+        alt="Beautiful clean California home with sparkling new gutters"
+        loading="lazy"
+      />
+      <div class="showcase-panel-content">
+        <span class="showcase-tag stag-after">After</span>
+        <h3>Spotless Results</h3>
+        <p>Clean, flowing gutters protecting your home — ready for rain</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Interactive slider -->
-  <div class="ba-slider-wrap reveal" style="margin-top:3rem;">
-    <div class="ba-slider-container" id="baSlider">
-      <img class="ba-img-before"
-        src="https://images.unsplash.com/photo-1607400201515-c2c41c07d307?w=1200&q=80"
-        alt="Before gutter cleaning"
+<!-- ══════════════ BEFORE / AFTER GALLERY ══════════════
+     INTERACTIVE SLIDER:
+       BEFORE: Gutter packed with colorful fall leaves — photo-1628348070889-cb656235b4eb
+       AFTER:  New clean gutters on home — photo-1600585154526-990dced4db0d
+
+     GRID PAIRS:
+     Row 1: Before = roof gutter debris (photo-1589939705384)  |  After = clean gutter house (photo-1600585154526)
+     Row 2: Before = dark clogged pipe (photo-1628348070889)   |  After = beautiful home exterior (photo-1558618666)
+     Row 3: Before = weathered roof (photo-1503387762)         |  After = pristine LA home (photo-1564013799919)
+-->
+<section id="gallery">
+  <div class="ba-header">
+    <span class="stag reveal">Our Work</span>
+    <h2 class="stitle reveal d1">BEFORE <span class="gold">&amp; AFTER</span></h2>
+    <p class="sdesc reveal d2" style="margin-top:.5rem">Real jobs, real results. Drag the slider to see the transformation we deliver on every project.</p>
+  </div>
+
+  <!-- INTERACTIVE COMPARISON SLIDER -->
+  <div class="slider-wrap reveal">
+    <div class="slider-container" id="sliderBox">
+      <!-- BEFORE: Clogged gutter full of autumn leaves and standing water -->
+      <img class="sl-before"
+        src="https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=1200&q=85"
+        alt="Before: gutter clogged with leaves and debris"
       />
-      <div class="ba-clip" id="baClip" style="width:50%">
+      <!-- AFTER: Clean new aluminum gutters on a beautiful home -->
+      <div class="sl-clip" id="slClip">
         <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-          alt="After gutter cleaning"
-          style="width:100vw;max-width:900px;"
+          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=85"
+          alt="After: clean spotless gutters on home"
         />
       </div>
-      <div class="ba-divider-line" id="baDivider" style="left:50%">
-        <div class="ba-handle">⟺</div>
+      <div class="sl-line" id="slLine">
+        <div class="sl-handle">⟺</div>
       </div>
-      <div class="ba-labels-overlay">
-        <span class="before-lbl">BEFORE</span>
-        <span class="after-lbl">AFTER</span>
+      <div class="sl-labels">
+        <span class="lbl-before">Before</span>
+        <span class="lbl-after">After</span>
       </div>
     </div>
-    <p style="text-align:center;margin-top:0.8rem;font-size:0.78rem;color:rgba(248,251,255,0.35);letter-spacing:0.1em;text-transform:uppercase;">← Drag slider to compare →</p>
   </div>
+  <p class="slider-hint reveal">← Drag the slider to compare →</p>
 
-  <!-- Photo grid -->
-  <div class="before-after-grid" style="margin-top:2.5rem;">
+  <!-- BEFORE / AFTER PHOTO GRID -->
+  <div class="ba-grid" style="margin-top:2rem">
+
+    <!-- BEFORE 1: Dirty gutter packed with autumn leaves -->
     <div class="ba-card reveal">
-      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Gutter work" />
-      <div class="ba-label after">After</div>
+      <img
+        src="https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=700&q=80"
+        alt="Before: gutter full of leaves and organic debris"
+        loading="lazy"
+      />
+      <div class="ba-lbl b">Before</div>
       <div class="ba-overlay"></div>
-      <div class="ba-caption">Clean seamless gutters — Los Feliz</div>
+      <div class="ba-cap">Heavy leaf buildup — Culver City</div>
     </div>
-    <div class="ba-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=800&q=80" alt="Clogged gutters before" />
-      <div class="ba-label before">Before</div>
+
+    <!-- AFTER 1: Pristine clean gutters on white home -->
+    <div class="ba-card reveal d1">
+      <img
+        src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80"
+        alt="After: clean new gutters on home"
+        loading="lazy"
+      />
+      <div class="ba-lbl a">After</div>
       <div class="ba-overlay"></div>
-      <div class="ba-caption">Heavy debris buildup — Culver City</div>
+      <div class="ba-cap">Sparkling clean gutters — West Hollywood</div>
     </div>
-    <div class="ba-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="New gutter installation" />
-      <div class="ba-label after">After</div>
+
+    <!-- BEFORE 2: Old weathered roof with deteriorating gutters -->
+    <div class="ba-card reveal d2">
+      <img
+        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80"
+        alt="Before: old weathered roof and sagging gutters"
+        loading="lazy"
+      />
+      <div class="ba-lbl b">Before</div>
       <div class="ba-overlay"></div>
-      <div class="ba-caption">New 6" OG gutter installation — Brentwood</div>
+      <div class="ba-cap">Sagging, damaged gutters — Silver Lake</div>
     </div>
+
+    <!-- AFTER 2: Beautiful house exterior, clean roof line -->
     <div class="ba-card reveal">
-      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="House exterior gutters" />
-      <div class="ba-label after">After</div>
+      <img
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80"
+        alt="After: beautiful house exterior with clean gutter system"
+        loading="lazy"
+      />
+      <div class="ba-lbl a">After</div>
       <div class="ba-overlay"></div>
-      <div class="ba-caption">Complete gutter replacement — Santa Monica</div>
+      <div class="ba-cap">Full gutter replacement — Brentwood</div>
     </div>
-    <div class="ba-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Roof cleaning" />
-      <div class="ba-label before">Before</div>
+
+    <!-- BEFORE 3: Roof covered in debris, leaves blocking gutters -->
+    <div class="ba-card reveal d1">
+      <img
+        src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80"
+        alt="Before: roof covered in leaves and debris"
+        loading="lazy"
+      />
+      <div class="ba-lbl b">Before</div>
       <div class="ba-overlay"></div>
-      <div class="ba-caption">Moss buildup — Silver Lake</div>
+      <div class="ba-cap">Moss & debris buildup — Los Feliz</div>
     </div>
-    <div class="ba-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80" alt="Clean home exterior" />
-      <div class="ba-label after">After</div>
+
+    <!-- AFTER 3: Pristine LA home exterior -->
+    <div class="ba-card reveal d2">
+      <img
+        src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80"
+        alt="After: gorgeous clean California home exterior"
+        loading="lazy"
+      />
+      <div class="ba-lbl a">After</div>
       <div class="ba-overlay"></div>
-      <div class="ba-caption">Spotless gutters & roof — West Hollywood</div>
+      <div class="ba-cap">Complete clean & install — Santa Monica</div>
     </div>
+
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- ══════════════ TESTIMONIALS ══════════════ -->
 <section id="testimonials">
-  <div class="section-header">
-    <div class="section-header-left">
-      <span class="section-tag reveal">Customer Love</span>
-      <h2 class="section-title reveal reveal-delay-1">5-STAR <span class="gold">REVIEWS</span></h2>
+  <div class="sec-header" style="margin-bottom:0">
+    <div>
+      <span class="stag reveal">Customer Love</span>
+      <h2 class="stitle reveal d1">5-STAR <span class="gold">REVIEWS</span></h2>
     </div>
   </div>
-  <div class="testimonials-track-wrap">
-    <div class="testimonials-track" id="testimonialTrack">
-      <!-- Cards duplicated for infinite scroll -->
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"I was extremely satisfied with the gutter cleaning service I received. Erick and his crew were punctual, professional, and efficient. They took the time to explain the process and answer all my questions. Gutters were thoroughly cleaned and any debris or clogs were removed."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">JM</div>
-          <div class="testi-info"><h5>Jennifer M.</h5><span>Los Angeles, CA</span><div class="testi-source">Google Reviews</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick was awesome. Needed a rain gutter & roof cleaning on short notice for a new home with tons of leaf build up and an imminent rain storm. He was able to come out in practically an hour! The before and after pics had me pretty floored."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">RA</div>
-          <div class="testi-info"><h5>Rob A.</h5><span>West LA, CA</span><div class="testi-source">Yelp</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick has taken care of my gutters for a few years. He is always positive, enthusiastic, knowledgeable, and professional. He doesn't try to upsell unless he sees a problem. I trust his judgment — that's what you need from a local business."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SG</div>
-          <div class="testi-info"><h5>Susan G.</h5><span>Los Angeles, CA</span><div class="testi-source">Nextdoor</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick was very communicative and on time. He was efficient and able to problem solve on the spot — a quality I appreciate with anyone working on my older home. I now have a functioning downspout, just in time for rainy season."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">CK</div>
-          <div class="testi-info"><h5>Carol K.</h5><span>Culver City, CA</span><div class="testi-source">Trustguide</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick's team not only gave me the fairest price to clean my gutters, but they proceeded to clean them within 2 days of my request and I have extremely high gutters. I will never use anyone else. These guys are the real deal."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">DL</div>
-          <div class="testi-info"><h5>David L.</h5><span>Brentwood, CA</span><div class="testi-source">Yelp</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick Lopez cleaned, repaired & added to our gutters, which had always caused problems. Second time using Spotless Rain Gutter Cleaning — it was really easy to communicate with. Will definitely use again!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SG</div>
-          <div class="testi-info"><h5>S. Garcia</h5><span>Los Angeles, CA</span><div class="testi-source">Nextdoor</div></div>
-        </div>
-      </div>
-      <!-- Duplicate for infinite loop -->
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"I was extremely satisfied with the gutter cleaning service I received. Erick and his crew were punctual, professional, and efficient. They took the time to explain the process and answer all my questions. Gutters were thoroughly cleaned and any debris or clogs were removed."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">JM</div>
-          <div class="testi-info"><h5>Jennifer M.</h5><span>Los Angeles, CA</span><div class="testi-source">Google Reviews</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick was awesome. Needed a rain gutter & roof cleaning on short notice for a new home with tons of leaf build up and an imminent rain storm. He was able to come out in practically an hour! The before and after pics had me pretty floored."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">RA</div>
-          <div class="testi-info"><h5>Rob A.</h5><span>West LA, CA</span><div class="testi-source">Yelp</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick has taken care of my gutters for a few years. He is always positive, enthusiastic, knowledgeable, and professional. He doesn't try to upsell unless he sees a problem. I trust his judgment — that's what you need from a local business."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SG</div>
-          <div class="testi-info"><h5>Susan G.</h5><span>Los Angeles, CA</span><div class="testi-source">Nextdoor</div></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Erick's team not only gave me the fairest price to clean my gutters, but they proceeded to clean them within 2 days of my request and I have extremely high gutters. I will never use anyone else. These guys are the real deal."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">DL</div>
-          <div class="testi-info"><h5>David L.</h5><span>Brentwood, CA</span><div class="testi-source">Yelp</div></div>
-        </div>
-      </div>
+  <div class="ttrack-wrap">
+    <div class="ttrack">
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Extremely satisfied with the gutter cleaning. Erick and his crew were punctual, professional, and efficient. They explained the whole process and answered every question. Gutters are completely clear — so ready for rain season."</p><div class="tcard-author"><div class="tcard-avatar">JM</div><div class="tcard-info"><h5>Jennifer M.</h5><span>Los Angeles</span><div class="tcard-src">Google Reviews</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick was awesome. Needed a rain gutter & roof cleaning on short notice — tons of leaf buildup and an imminent storm. He came out in practically an hour. The before and after photos had me pretty floored. No mess at all."</p><div class="tcard-author"><div class="tcard-avatar">RA</div><div class="tcard-info"><h5>Rob A.</h5><span>West LA</span><div class="tcard-src">Yelp</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick has taken care of my gutters for a few years. Always positive, knowledgeable, and professional. He doesn't try to upsell unless he actually sees a problem. I trust his judgment completely — that's what you need."</p><div class="tcard-author"><div class="tcard-avatar">SG</div><div class="tcard-info"><h5>Susan G.</h5><span>Los Angeles</span><div class="tcard-src">Nextdoor</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick was communicative and on time. Efficient and able to problem-solve on the spot — a quality I really appreciate when working on my older home. I now have a functioning downspout just in time for rainy season."</p><div class="tcard-author"><div class="tcard-avatar">CK</div><div class="tcard-info"><h5>Carol K.</h5><span>Culver City</span><div class="tcard-src">Trustguide</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick's team gave me the fairest price AND cleaned my gutters within 2 days — and I have extremely high gutters. I will never use anyone else. Period. These guys are the real deal. Highest recommendation possible."</p><div class="tcard-author"><div class="tcard-avatar">DL</div><div class="tcard-info"><h5>David L.</h5><span>Brentwood</span><div class="tcard-src">Yelp</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick's team showed up on time, were polite, listened to my special requests, and did a great job cleaning the gutters and leaving the site spotless. I've used them several times now and will keep coming back."</p><div class="tcard-author"><div class="tcard-avatar">TP</div><div class="tcard-info"><h5>Tina P.</h5><span>Studio City</span><div class="tcard-src">Google Reviews</div></div></div></div>
+      <!-- duplicated for infinite loop -->
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Extremely satisfied with the gutter cleaning. Erick and his crew were punctual, professional, and efficient. They explained the whole process and answered every question. Gutters are completely clear — so ready for rain season."</p><div class="tcard-author"><div class="tcard-avatar">JM</div><div class="tcard-info"><h5>Jennifer M.</h5><span>Los Angeles</span><div class="tcard-src">Google Reviews</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick was awesome. Needed a rain gutter & roof cleaning on short notice — tons of leaf buildup and an imminent storm. He came out in practically an hour. The before and after photos had me pretty floored. No mess at all."</p><div class="tcard-author"><div class="tcard-avatar">RA</div><div class="tcard-info"><h5>Rob A.</h5><span>West LA</span><div class="tcard-src">Yelp</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick has taken care of my gutters for a few years. Always positive, knowledgeable, and professional. He doesn't try to upsell unless he actually sees a problem. I trust his judgment completely — that's what you need."</p><div class="tcard-author"><div class="tcard-avatar">SG</div><div class="tcard-info"><h5>Susan G.</h5><span>Los Angeles</span><div class="tcard-src">Nextdoor</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Erick's team gave me the fairest price AND cleaned my gutters within 2 days — and I have extremely high gutters. I will never use anyone else. Period. These guys are the real deal. Highest recommendation possible."</p><div class="tcard-author"><div class="tcard-avatar">DL</div><div class="tcard-info"><h5>David L.</h5><span>Brentwood</span><div class="tcard-src">Yelp</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- ══════════════ WHY US ══════════════
+     MAIN: Worker on ladder at roof — confident, professional shot
+     Unsplash: photo-1504307651254-35680f356dfd (different crop/framing)
+
+     FLOAT: Clean LA house exterior with good gutter line
+     Unsplash: photo-1558618666-fcd25c85cd64
+-->
 <section id="why">
-  <div class="why-img-stack reveal">
-    <img class="why-main-img"
-      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
-      alt="Professional gutter work"
+  <div class="why-imgs reveal">
+    <img class="why-main"
+      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=85"
+      alt="Professional gutter technician at work"
+      loading="lazy"
     />
-    <img class="why-float-img"
-      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
-      alt="Erick Lopez - Owner"
+    <img class="why-float"
+      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=85"
+      alt="Clean house exterior with new gutters"
+      loading="lazy"
     />
   </div>
   <div>
-    <span class="section-tag reveal">Why Choose Us</span>
-    <h2 class="section-title reveal reveal-delay-1">THE SPOTLESS <span class="gold">DIFFERENCE</span></h2>
-    <div class="divider reveal reveal-delay-2"></div>
+    <span class="stag reveal">Why Choose Us</span>
+    <h2 class="stitle reveal d1">THE SPOTLESS <span class="gold">DIFFERENCE</span></h2>
+    <div class="divider reveal d2"></div>
     <div class="why-items">
-      <div class="why-item reveal reveal-delay-2">
-        <div class="why-num">01</div>
-        <div>
-          <h4>Speed & Responsiveness</h4>
-          <p>Erick gets back to calls within minutes. Jobs scheduled as fast as the next day. When you need gutters cleared before rain, we move fast.</p>
-        </div>
+      <div class="why-item reveal d2">
+        <div class="why-n">01</div>
+        <div><h4>Speed & Responsiveness</h4><p>Erick gets back to calls within minutes. Jobs scheduled as fast as the next day — even same-day when needed.</p></div>
       </div>
-      <div class="why-item reveal reveal-delay-3">
-        <div class="why-num">02</div>
-        <div>
-          <h4>Transparent Pricing</h4>
-          <p>No hidden fees. We quote a fair price and stick to it. Our customers consistently say we're the most competitive in the area.</p>
-        </div>
+      <div class="why-item reveal d3">
+        <div class="why-n">02</div>
+        <div><h4>Transparent Pricing</h4><p>No hidden fees. We quote a fair price and stick to it. Customers consistently say we're the most competitive in LA.</p></div>
       </div>
-      <div class="why-item reveal reveal-delay-4">
-        <div class="why-num">03</div>
-        <div>
-          <h4>Photo Documentation</h4>
-          <p>Before & after photos delivered on every job. You'll see exactly what was done and why — complete peace of mind.</p>
-        </div>
+      <div class="why-item reveal d3">
+        <div class="why-n">03</div>
+        <div><h4>Photo Documentation</h4><p>Before & after photos on every single job. See exactly what was done — complete peace of mind guaranteed.</p></div>
       </div>
-      <div class="why-item reveal reveal-delay-4">
-        <div class="why-num">04</div>
-        <div>
-          <h4>Serving All of Los Angeles</h4>
-          <p>From Beverly Hills to Culver City, Santa Monica to Silver Lake — we cover all neighborhoods across Greater LA.</p>
-        </div>
+      <div class="why-item reveal d4">
+        <div class="why-n">04</div>
+        <div><h4>All of Greater Los Angeles</h4><p>From Beverly Hills to Culver City, Santa Monica to Silver Lake — we cover every LA neighborhood.</p></div>
       </div>
     </div>
-    <div class="coverage-list reveal" style="margin-top:2.5rem;">
-      <span class="coverage-tag">Beverly Hills</span>
-      <span class="coverage-tag">Culver City</span>
-      <span class="coverage-tag">Santa Monica</span>
-      <span class="coverage-tag">Silver Lake</span>
-      <span class="coverage-tag">Los Feliz</span>
-      <span class="coverage-tag">West Hollywood</span>
-      <span class="coverage-tag">Brentwood</span>
-      <span class="coverage-tag">Studio City</span>
-      <span class="coverage-tag">Westwood</span>
-      <span class="coverage-tag">Mar Vista</span>
-      <span class="coverage-tag">Palms</span>
-      <span class="coverage-tag">+ More</span>
+    <div class="coverage reveal" style="margin-top:2rem">
+      <span class="ctag">Beverly Hills</span><span class="ctag">Culver City</span>
+      <span class="ctag">Santa Monica</span><span class="ctag">Silver Lake</span>
+      <span class="ctag">Los Feliz</span><span class="ctag">West Hollywood</span>
+      <span class="ctag">Brentwood</span><span class="ctag">Studio City</span>
+      <span class="ctag">Westwood</span><span class="ctag">Mar Vista</span>
+      <span class="ctag">Palms</span><span class="ctag">+ More</span>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ══════════════ PRICING ══════════════ -->
 <section id="pricing">
-  <span class="section-tag reveal">Transparent Pricing</span>
-  <h2 class="section-title reveal reveal-delay-1">SIMPLE, FAIR <span class="gold">PRICES</span></h2>
-  <p class="section-desc reveal reveal-delay-2" style="margin:0.8rem auto 0;text-align:center;">Every home is different. Get a free personalized quote — no obligation.</p>
-  <div class="pricing-grid">
-    <div class="price-card reveal">
-      <div class="price-tier">Single Story</div>
-      <div class="price-name">Basic Clean</div>
-      <div class="price-val">$99<span> / starting</span></div>
-      <div class="price-note">Average home up to 1,500 sq ft</div>
-      <div class="price-divider"></div>
-      <ul class="price-features">
+  <span class="stag reveal">Transparent Pricing</span>
+  <h2 class="stitle reveal d1">SIMPLE, FAIR <span class="gold">PRICES</span></h2>
+  <p class="sdesc reveal d2" style="margin:.7rem auto 0;text-align:center">Every home is different. Get a free personalized quote — no obligation, no pressure.</p>
+  <div class="price-grid">
+    <div class="pcard reveal">
+      <div class="p-tier">Single Story</div>
+      <div class="p-name">Basic Clean</div>
+      <div class="p-val">$99<span> / starting</span></div>
+      <div class="p-note">Average home up to 1,500 sq ft</div>
+      <div class="p-div"></div>
+      <ul class="p-feats">
         <li>Full gutter debris removal</li>
         <li>Downspout flush & check</li>
         <li>Before & after photos</li>
         <li>Ground-level cleanup</li>
       </ul>
-      <a href="#contact" class="btn-price btn-price-outline">Get a Quote</a>
+      <a href="#contact" class="btn-p btn-p-out">Get a Quote</a>
     </div>
-    <div class="price-card popular reveal reveal-delay-1">
-      <span class="popular-badge">Most Popular</span>
-      <div class="price-tier">Two Story</div>
-      <div class="price-name">Complete Clean</div>
-      <div class="price-val">$175<span> / starting</span></div>
-      <div class="price-note">Average home up to 2,500 sq ft</div>
-      <div class="price-divider"></div>
-      <ul class="price-features">
+    <div class="pcard pop reveal d1">
+      <span class="pop-badge">Most Popular</span>
+      <div class="p-tier">Two Story</div>
+      <div class="p-name">Complete Clean</div>
+      <div class="p-val">$175<span> / starting</span></div>
+      <div class="p-note">Average home up to 2,500 sq ft</div>
+      <div class="p-div"></div>
+      <ul class="p-feats">
         <li>Full gutter & downspout cleaning</li>
         <li>Minor gutter adjustment included</li>
         <li>Before & after photos</li>
         <li>Full cleanup included</li>
         <li>Minor repair quote same visit</li>
       </ul>
-      <a href="#contact" class="btn-price btn-price-primary">Get a Quote</a>
+      <a href="#contact" class="btn-p btn-p-fill">Get a Quote</a>
     </div>
-    <div class="price-card reveal reveal-delay-2">
-      <div class="price-tier">Installation</div>
-      <div class="price-name">New Gutters</div>
-      <div class="price-val">Custom<span> quote</span></div>
-      <div class="price-note">All styles & materials available</div>
-      <div class="price-divider"></div>
-      <ul class="price-features">
+    <div class="pcard reveal d2">
+      <div class="p-tier">Installation</div>
+      <div class="p-name">New Gutters</div>
+      <div class="p-val">Custom<span> quote</span></div>
+      <div class="p-note">All styles & materials available</div>
+      <div class="p-div"></div>
+      <ul class="p-feats">
         <li>5" & 6" OG, box, fascia styles</li>
         <li>Aluminum, copper & custom</li>
         <li>All downspout sizes</li>
         <li>Leader head installation</li>
-        <li>Multi-year warranty on labor</li>
+        <li>Warranty on labor</li>
       </ul>
-      <a href="#contact" class="btn-price btn-price-outline">Get a Quote</a>
+      <a href="#contact" class="btn-p btn-p-out">Get a Quote</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══════════════ CONTACT ══════════════
+     BG PHOTO: House in rain with water flowing through gutters
+     Unsplash: photo-1558618666-fcd25c85cd64 — used at very low opacity
+-->
 <section id="contact">
-  <div class="contact-grid">
-    <div>
-      <span class="section-tag reveal">Contact Us</span>
-      <h2 class="section-title reveal reveal-delay-1">GET YOUR<br><span class="gold">FREE QUOTE</span></h2>
-      <div class="divider reveal reveal-delay-2"></div>
-      <p class="section-desc reveal reveal-delay-2">Ready to protect your home? Call us now or fill out the form. We respond fast — usually within minutes.</p>
-      <div class="contact-info" style="margin-top:2.5rem;">
-        <div class="contact-item reveal">
-          <div class="contact-icon">📞</div>
-          <div class="contact-detail">
-            <h4>Phone</h4>
-            <a href="tel:4242286973">(424) 228-6973</a>
-            <div class="sub">Call or text anytime — 24/7</div>
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div>
+        <span class="stag reveal">Contact Us</span>
+        <h2 class="stitle reveal d1">GET YOUR<br><span class="gold">FREE QUOTE</span></h2>
+        <div class="divider reveal d2"></div>
+        <p class="sdesc reveal d2">Ready to protect your home? Call us now or fill out the form. We respond fast — usually within minutes.</p>
+        <div class="c-info" style="margin-top:2.2rem">
+          <div class="c-item reveal">
+            <div class="c-icon">📞</div>
+            <div class="c-detail">
+              <h4>Phone</h4>
+              <a href="tel:4242286973">(424) 228-6973</a>
+              <div class="sub">Call or text — available 24/7</div>
+            </div>
+          </div>
+          <div class="c-item reveal d1">
+            <div class="c-icon">📍</div>
+            <div class="c-detail">
+              <h4>Location</h4>
+              <p>1927 S Shenandoah St, Ste 6</p>
+              <div class="sub">Los Angeles, CA 90034</div>
+            </div>
+          </div>
+          <div class="c-item reveal d2">
+            <div class="c-icon">🕐</div>
+            <div class="c-detail">
+              <h4>Hours</h4>
+              <p>Mon–Sat: Open 24 Hours</p>
+              <div class="sub">Sunday: Available until 11:45 PM</div>
+            </div>
           </div>
         </div>
-        <div class="contact-item reveal reveal-delay-1">
-          <div class="contact-icon">📍</div>
-          <div class="contact-detail">
-            <h4>Location</h4>
-            <p>1927 S Shenandoah St, Ste 6</p>
-            <div class="sub">Los Angeles, CA 90034</div>
-          </div>
+      </div>
+      <div class="c-form reveal d2">
+        <h3>Request a Free Estimate</h3>
+        <div class="f-row">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="John" /></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
         </div>
-        <div class="contact-item reveal reveal-delay-2">
-          <div class="contact-icon">🕐</div>
-          <div class="contact-detail">
-            <h4>Hours</h4>
-            <p>Mon–Sat: Open 24 Hours</p>
-            <div class="sub">Sunday: Available until 11:45 PM</div>
-          </div>
+        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="(310) 555-0000" /></div>
+        <div class="fg">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Gutter Cleaning</option>
+            <option>Gutter Installation</option>
+            <option>Gutter Repair</option>
+            <option>Roof Cleaning</option>
+            <option>Solar Panel Cleaning</option>
+            <option>Emergency Service</option>
+          </select>
         </div>
-      </div>
-    </div>
-    <div class="contact-form reveal reveal-delay-2">
-      <h3>Request a Free Estimate</h3>
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="John" />
+        <div class="fg">
+          <label>Property Type</label>
+          <select>
+            <option>Single Story Home</option>
+            <option>Two Story Home</option>
+            <option>Commercial Property</option>
+            <option>Condo / Apartment</option>
+          </select>
         </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Smith" />
-        </div>
+        <div class="fg"><label>Message (Optional)</label><textarea placeholder="Tell us a bit about your gutter situation..."></textarea></div>
+        <button class="f-submit" onclick="this.textContent='✅ Sent! Erick will reach out shortly.';this.style.background='linear-gradient(135deg,#22c55e,#16a34a)';this.style.color='white'">
+          📩 Send My Free Quote Request
+        </button>
       </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="(310) 555-0000" />
-      </div>
-      <div class="form-group">
-        <label>Service Needed</label>
-        <select>
-          <option value="">Select a service...</option>
-          <option>Gutter Cleaning</option>
-          <option>Gutter Installation</option>
-          <option>Gutter Repair</option>
-          <option>Roof Cleaning</option>
-          <option>Solar Panel Cleaning</option>
-          <option>Emergency Service</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Property Type</label>
-        <select>
-          <option>Single Story Home</option>
-          <option>Two Story Home</option>
-          <option>Commercial Property</option>
-          <option>Condo / Apartment</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message (Optional)</label>
-        <textarea placeholder="Tell us a bit about your gutter situation..."></textarea>
-      </div>
-      <button class="form-submit" onclick="alert('Thanks! Erick will reach out shortly. Or call (424) 228-6973 for immediate assistance.')">
-        📩 Send My Free Quote Request
-      </button>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
+  <div class="foot-top">
+    <div class="foot-brand">
       <a href="#" class="nav-logo">
-        <div class="nav-logo-icon">🌧️</div>
+        <div class="nav-logo-mark">🌧️</div>
         <div class="nav-logo-text">
-          <span>Spotless Rain</span>
-          <span>Gutter Cleaning</span>
+          <b>Spotless Rain</b>
+          <small>Gutter Cleaning · LA</small>
         </div>
       </a>
-      <p>Family-owned gutter cleaning, installation & repair serving all of Los Angeles since 2020. Honest, efficient, and always 5-star rated.</p>
+      <p>Family-owned gutter cleaning, installation & repair across Los Angeles. Honest, efficient, and always 5-star rated since 2020.</p>
     </div>
-    <div class="footer-col">
+    <div class="foot-col">
       <h5>Services</h5>
       <ul>
         <li><a href="#">Gutter Cleaning</a></li>
@@ -1245,7 +1133,7 @@
         <li><a href="#">Solar Panel Cleaning</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="foot-col">
       <h5>Areas Served</h5>
       <ul>
         <li><a href="#">Beverly Hills</a></li>
@@ -1255,7 +1143,7 @@
         <li><a href="#">Silver Lake</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="foot-col">
       <h5>Contact</h5>
       <ul>
         <li><a href="tel:4242286973">(424) 228-6973</a></li>
@@ -1265,7 +1153,7 @@
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">
+  <div class="foot-bottom">
     <span>© 2025 Spotless Rain Gutter Cleaning. All rights reserved.</span>
     <span>Made with ♥ in Los Angeles · <a href="tel:4242286973">(424) 228-6973</a></span>
   </div>
@@ -1273,42 +1161,41 @@
 
 <!-- FLOATING CTA -->
 <div class="float-cta">
-  <a href="tel:4242286973" class="float-btn float-phone">📞 Call Now — (424) 228-6973</a>
+  <a href="tel:4242286973" class="float-phone">📞 Call Now · (424) 228-6973</a>
 </div>
 
 <script>
-  // NAV SCROLL
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
-  });
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>55)
+})
 
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})
+},{threshold:.1,rootMargin:'0px 0px -36px 0px'})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
 
-  // BEFORE/AFTER SLIDER
-  const slider = document.getElementById('baSlider');
-  const clip = document.getElementById('baClip');
-  const divider = document.getElementById('baDivider');
-  let isDragging = false;
+// Before/After Slider
+const box=document.getElementById('sliderBox')
+const clip=document.getElementById('slClip')
+const line=document.getElementById('slLine')
+let drag=false
 
-  function updateSlider(x) {
-    const rect = slider.getBoundingClientRect();
-    let pct = Math.max(5, Math.min(95, ((x - rect.left) / rect.width) * 100));
-    clip.style.width = pct + '%';
-    divider.style.left = pct + '%';
-  }
+function moveSl(x){
+  const r=box.getBoundingClientRect()
+  const pct=Math.max(4,Math.min(96,((x-r.left)/r.width)*100))
+  clip.style.width=pct+'%'
+  line.style.left=pct+'%'
+}
 
-  divider.addEventListener('mousedown', e => { isDragging = true; e.preventDefault(); });
-  window.addEventListener('mouseup', () => { isDragging = false; });
-  window.addEventListener('mousemove', e => { if (isDragging) updateSlider(e.clientX); });
-  slider.addEventListener('touchstart', e => { isDragging = true; }, { passive: true });
-  window.addEventListener('touchend', () => { isDragging = false; });
-  window.addEventListener('touchmove', e => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
-  slider.addEventListener('click', e => updateSlider(e.clientX));
+line.addEventListener('mousedown',e=>{drag=true;e.preventDefault()})
+window.addEventListener('mouseup',()=>drag=false)
+window.addEventListener('mousemove',e=>{if(drag)moveSl(e.clientX)})
+box.addEventListener('touchstart',()=>drag=true,{passive:true})
+window.addEventListener('touchend',()=>drag=false)
+window.addEventListener('touchmove',e=>{if(drag)moveSl(e.touches[0].clientX)},{passive:true})
+box.addEventListener('click',e=>moveSl(e.clientX))
 </script>
 </body>
 </html>
